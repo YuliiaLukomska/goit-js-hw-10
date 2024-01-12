@@ -1,4 +1,7 @@
 /* Reset styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 a {
   text-decoration: none;
   outline: none;
