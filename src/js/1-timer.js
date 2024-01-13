@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
 
 let userSelectedDate;
 let intervalId = null;
@@ -17,7 +18,11 @@ const fp = flatpickr('#datetime-picker', {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate - new Date() < 0) {
       btnRef.disabled = true;
-      alert('Please choose a date in the future');
+      iziToast.error({
+        title: 'Error',
+        message: 'Illegal operation',
+        backgroundColor: 'red',
+      });
     } else {
       btnRef.disabled = false;
     }
