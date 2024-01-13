@@ -21,7 +21,8 @@ const fp = flatpickr('#datetime-picker', {
       iziToast.error({
         title: 'Error',
         message: 'Illegal operation',
-        backgroundColor: 'red',
+        class: 'toast',
+        position: 'center',
       });
     } else {
       btnRef.disabled = false;
