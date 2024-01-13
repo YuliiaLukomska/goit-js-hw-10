@@ -7,6 +7,7 @@ let userSelectedDate;
 let intervalId = null;
 const btnRef = document.querySelector('button[data-start]');
 btnRef.disabled = true;
+btnRef.classList.add('disable');
 const valueArray = document.querySelectorAll(`.value`);
 
 const fp = flatpickr('#datetime-picker', {
@@ -32,6 +33,7 @@ const fp = flatpickr('#datetime-picker', {
       });
     } else {
       btnRef.disabled = false;
+      btnRef.classList.remove('disable');
     }
   },
 });
