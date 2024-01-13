@@ -5,6 +5,7 @@ let userSelectedDate;
 let intervalId = null;
 const btnRef = document.querySelector('button[data-start]');
 btnRef.disabled = true;
+const valueArray = document.querySelectorAll(`.value`);
 
 const fp = flatpickr('#datetime-picker', {
   enableTime: true,
@@ -22,12 +23,44 @@ const fp = flatpickr('#datetime-picker', {
     }
   },
 });
+function convertMs(ms) {
+  // Number of milliseconds per unit of time
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  // Remaining days
+  const days = Math.floor(ms / day);
+  // Remaining hours
+  const hours = Math.floor((ms % day) / hour);
+  // Remaining minutes
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  // Remaining seconds
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
 
 function handleStartTimer() {
-  const startTime = Date.now();
   intervalId = setInterval(() => {
-    const currentTime = Date.now();
-    const differ = currentTime - startTime;
+    const startTime = Date.now();
+
+    const differ = userSelectedDate - startTime;
+    console.log(differ);
+    if (differ <= 1000) {
+      clearInterval(intervalId);
+    }
+    const convertedTime = convertMs(differ);
+
+    valueArray[0].textContent = convertedTime.days.toString().padStart(2, '0');
+    valueArray[1].textContent = convertedTime.hours.toString().padStart(2, '0');
+    valueArray[2].textContent = convertedTime.minutes
+      .toString()
+      .padStart(2, '0');
+    valueArray[3].textContent = convertedTime.seconds
+      .toString()
+      .padStart(2, '0');
   }, 1000);
 }
 
