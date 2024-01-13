@@ -1,6 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate;
 let intervalId = null;
@@ -22,7 +23,12 @@ const fp = flatpickr('#datetime-picker', {
         title: 'Error',
         message: 'Illegal operation',
         class: 'toast',
-        position: 'center',
+        position: 'topRight',
+        iconUrl: '../img/left-close.svg',
+        titleColor: 'white',
+        messageColor: 'white',
+        timeout: false,
+        backgroundColor: '#EF4040',
       });
     } else {
       btnRef.disabled = false;
