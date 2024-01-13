@@ -41,26 +41,25 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
+}
 
 function handleStartTimer() {
   intervalId = setInterval(() => {
     const startTime = Date.now();
 
     const differ = userSelectedDate - startTime;
-    console.log(differ);
-    if (differ <= 1000) {
+
+    if (differ < 1000) {
       clearInterval(intervalId);
     }
     const convertedTime = convertMs(differ);
 
-    valueArray[0].textContent = convertedTime.days.toString().padStart(2, '0');
-    valueArray[1].textContent = convertedTime.hours.toString().padStart(2, '0');
-    valueArray[2].textContent = convertedTime.minutes
-      .toString()
-      .padStart(2, '0');
-    valueArray[3].textContent = convertedTime.seconds
-      .toString()
-      .padStart(2, '0');
+    valueArray[0].textContent = addLeadingZero(convertedTime.days);
+    valueArray[1].textContent = addLeadingZero(convertedTime.hours);
+    valueArray[2].textContent = addLeadingZero(convertedTime.minutes);
+    valueArray[3].textContent = addLeadingZero(convertedTime.seconds);
   }, 1000);
 }
 
