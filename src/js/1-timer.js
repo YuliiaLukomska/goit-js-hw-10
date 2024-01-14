@@ -7,7 +7,7 @@ let userSelectedDate;
 let intervalId = null;
 const btnRef = document.querySelector('button[data-start]');
 btnRef.disabled = true;
-btnRef.classList.add('disable');
+
 const valueArray = document.querySelectorAll(`.value`);
 btnRef.addEventListener('click', handleStartTimer);
 
@@ -21,7 +21,7 @@ const fp = flatpickr('#datetime-picker', {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate - new Date() < 0) {
       btnRef.disabled = true;
-      btnRef.classList.add('disable');
+      btnRef.classList.remove('active-btn');
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -35,7 +35,7 @@ const fp = flatpickr('#datetime-picker', {
       });
     } else {
       btnRef.disabled = false;
-      btnRef.classList.remove('disable');
+      btnRef.classList.add('active-btn');
     }
   },
 });

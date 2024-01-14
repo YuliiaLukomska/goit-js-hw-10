@@ -35,11 +35,6 @@ input {
   margin: auto;
 }
 
-/* .toast {
-  width: 302px;
-  height: 64px;
-} */
-
 .icon {
   background-image: url(../img/close-icon.svg);
 }
@@ -48,10 +43,9 @@ button {
   padding: 8px 16px;
   width: 75px;
   height: 40px;
-  color: #fff;
-  background-color: #4e75ff;
+  color: #989898;
+  background: #cfcfcf;
   border-radius: 8px;
-
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -70,7 +64,7 @@ button[disabled]:hover {
   padding-left: 156px;
 }
 
-.disable {
-  color: #989898;
-  background: #cfcfcf;
+.active-btn {
+  color: #fff;
+  background-color: #4e75ff;
 }
