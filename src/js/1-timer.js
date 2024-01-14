@@ -27,7 +27,7 @@ const fp = flatpickr('#datetime-picker', {
         message: 'Please choose a date in the future',
         class: 'toast',
         position: 'topRight',
-        iconUrl: '../img/left-close.svg',
+        iconUrl: './img/left-close.svg',
         titleColor: 'white',
         messageColor: 'white',
         timeout: false,
