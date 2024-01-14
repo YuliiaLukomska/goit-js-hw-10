@@ -8,7 +8,12 @@
   border-radius: 4px;
   border: 1px solid #808080;
 }
-
+.delay-input:hover {
+  border: 1px solid #000;
+}
+.delay-input:focus-within {
+  border-color: #4e75ff;
+}
 button {
   display: flex;
   width: 360px;
@@ -23,8 +28,12 @@ button {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: 0.04;
+  letter-spacing: 0.04em;
 }
+button:hover {
+  background-color: #6c8cff;
+}
+
 fieldset {
   margin-bottom: 24px;
   width: 360px;
@@ -36,6 +45,10 @@ fieldset {
   align-items: center;
   justify-content: center;
 }
+fieldset:hover {
+  border-color: #000;
+}
+
 .delay-label {
   display: flex;
   flex-direction: column;

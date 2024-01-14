@@ -13,10 +13,12 @@ formRef.addEventListener('submit', event => {
         messageColor: 'white',
         timeout: false,
         backgroundColor: '#59A10D',
+        iconUrl: '../img/check-mark.svg',
       })
     )
     .catch(error =>
       iziToast.error({
+        title: 'Error',
         message: `Rejected promise in ${error}ms`,
         position: 'topRight',
         iconUrl: '../img/left-close.svg',
