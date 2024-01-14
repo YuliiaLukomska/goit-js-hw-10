@@ -13,7 +13,7 @@ formRef.addEventListener('submit', event => {
         messageColor: 'white',
         timeout: false,
         backgroundColor: '#59A10D',
-        iconUrl: './img/check-mark.svg',
+        iconUrl: '../img/check-mark.svg',
       })
     )
     .catch(error =>
@@ -21,7 +21,7 @@ formRef.addEventListener('submit', event => {
         title: 'Error',
         message: `Rejected promise in ${error}ms`,
         position: 'topRight',
-        iconUrl: './img/left-close.svg',
+        iconUrl: '../img/left-close.svg',
         titleColor: 'white',
         messageColor: 'white',
         timeout: false,
