@@ -63,7 +63,7 @@ function addLeadingZero(value) {
 
 function handleStartTimer() {
   btnRef.disabled = true;
-  btnRef.classList.add('disable');
+  btnRef.classList.remove('active-btn');
   intervalId = setInterval(() => {
     const startTime = Date.now();
     const differ = userSelectedDate - startTime;
