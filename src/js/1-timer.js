@@ -9,6 +9,7 @@ const btnRef = document.querySelector('button[data-start]');
 btnRef.disabled = true;
 btnRef.classList.add('disable');
 const valueArray = document.querySelectorAll(`.value`);
+btnRef.addEventListener('click', handleStartTimer);
 
 const fp = flatpickr('#datetime-picker', {
   enableTime: true,
@@ -20,9 +21,10 @@ const fp = flatpickr('#datetime-picker', {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate - new Date() < 0) {
       btnRef.disabled = true;
+      btnRef.classList.add('disable');
       iziToast.error({
         title: 'Error',
-        message: 'Illegal operation',
+        message: 'Please choose a date in the future',
         class: 'toast',
         position: 'topRight',
         iconUrl: '../img/left-close.svg',
@@ -60,9 +62,10 @@ function addLeadingZero(value) {
 }
 
 function handleStartTimer() {
+  btnRef.disabled = true;
+  btnRef.classList.add('disable');
   intervalId = setInterval(() => {
     const startTime = Date.now();
-
     const differ = userSelectedDate - startTime;
 
     if (differ < 1000) {
@@ -76,15 +79,3 @@ function handleStartTimer() {
     valueArray[3].textContent = addLeadingZero(convertedTime.seconds);
   }, 1000);
 }
-
-btnRef.addEventListener('click', handleStartTimer);
-
-// const options = {
-//   enableTime: true, доступність вибору часу в календарі
-//   time_24hr: true,
-//   defaultDate: new Date(), початкова дата - сьогоднішня
-//   minuteIncrement: 1, збільшує хвилини на 1 при натисканні стрілки
-//   onClose(selectedDates) {
-//     console.log(selectedDates[0]);
-//   },
-// };
