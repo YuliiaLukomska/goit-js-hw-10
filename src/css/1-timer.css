@@ -42,10 +42,6 @@ input:focus {
   margin: auto;
 }
 
-.icon {
-  background-image: url(../img/close-icon.svg);
-}
-
 button {
   padding: 8px 16px;
   width: 75px;
