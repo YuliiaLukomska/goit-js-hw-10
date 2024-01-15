@@ -8,6 +8,7 @@ let userSelectedDate;
 let intervalId = null;
 const btnRef = document.querySelector('button[data-start]');
 btnRef.disabled = true;
+let isActive = false;
 
 const valueArray = document.querySelectorAll(`.value`);
 btnRef.addEventListener('click', handleStartTimer);
@@ -18,7 +19,6 @@ const fp = flatpickr('#datetime-picker', {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
     userSelectedDate = selectedDates[0];
     if (userSelectedDate - new Date() < 0) {
       btnRef.disabled = true;
@@ -62,6 +62,11 @@ function addLeadingZero(value) {
 }
 
 function handleStartTimer() {
+  if (isActive) {
+    clearInterval(intervalId);
+  }
+
+  isActive = true;
   btnRef.disabled = true;
   btnRef.classList.remove('active-btn');
   intervalId = setInterval(() => {
