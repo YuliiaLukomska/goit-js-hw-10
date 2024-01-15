@@ -1,5 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import checkmarkicon from '../img/check-mark.svg';
+import closeicon from '../img/left-close.svg';
 
 const formRef = document.querySelector('form');
 formRef.addEventListener('submit', event => {
@@ -13,7 +15,7 @@ formRef.addEventListener('submit', event => {
         messageColor: 'white',
         timeout: false,
         backgroundColor: '#59A10D',
-        iconUrl: '../img/check-mark.svg',
+        iconUrl: checkmarkicon,
       })
     )
     .catch(error =>
@@ -21,7 +23,7 @@ formRef.addEventListener('submit', event => {
         title: 'Error',
         message: `Rejected promise in ${error}ms`,
         position: 'topRight',
-        iconUrl: '../img/left-close.svg',
+        iconUrl: closeicon,
         titleColor: 'white',
         messageColor: 'white',
         timeout: false,

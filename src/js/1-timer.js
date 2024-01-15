@@ -2,6 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import closeicon from '../img/left-close.svg';
 
 let userSelectedDate;
 let intervalId = null;
@@ -27,7 +28,7 @@ const fp = flatpickr('#datetime-picker', {
         message: 'Please choose a date in the future',
         class: 'toast',
         position: 'topRight',
-        iconUrl: '../img/left-close.svg',
+        iconUrl: closeicon,
         titleColor: 'white',
         messageColor: 'white',
         timeout: false,
