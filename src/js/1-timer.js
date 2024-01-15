@@ -26,7 +26,6 @@ const fp = flatpickr('#datetime-picker', {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
-        class: 'toast',
         position: 'topRight',
         iconUrl: icon,
         titleColor: 'white',
