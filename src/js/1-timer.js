@@ -6,13 +6,13 @@ import icon from '../img/left-close.svg';
 
 let userSelectedDate;
 let intervalId = null;
-const btnRef = document.querySelector('button[data-start]');
+const startButtonRef = document.querySelector('button[data-start]');
 const inputRef = document.querySelector('#datetime-picker');
-btnRef.disabled = true;
+startButtonRef.disabled = true;
 let isActive = false;
 
-const valueArray = document.querySelectorAll(`.value`);
-btnRef.addEventListener('click', handleStartTimer);
+const timeValueArray = document.querySelectorAll(`.value`);
+startButtonRef.addEventListener('click', handleStartTimer);
 
 const fp = flatpickr('#datetime-picker', {
   enableTime: true,
@@ -22,8 +22,8 @@ const fp = flatpickr('#datetime-picker', {
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate - new Date() < 0) {
-      btnRef.disabled = true;
-      btnRef.classList.remove('active-btn');
+      startButtonRef.disabled = true;
+      startButtonRef.classList.remove('active-btn');
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -35,10 +35,8 @@ const fp = flatpickr('#datetime-picker', {
         backgroundColor: '#EF4040',
       });
     } else {
-      btnRef.disabled = false;
-      btnRef.classList.add('active-btn');
-      inputRef.disabled = true;
-      inputRef.classList.add('disable-input');
+      startButtonRef.disabled = false;
+      startButtonRef.classList.add('active-btn');
     }
   },
 });
@@ -70,9 +68,11 @@ function handleStartTimer() {
   }
 
   isActive = true;
-  btnRef.disabled = true;
-  btnRef.classList.remove('active-btn');
+  startButtonRef.disabled = true;
+  startButtonRef.classList.remove('active-btn');
   intervalId = setInterval(() => {
+    inputRef.disabled = true;
+    inputRef.classList.add('disable-input');
     const startTime = Date.now();
     const differ = userSelectedDate - startTime;
 
@@ -83,9 +83,9 @@ function handleStartTimer() {
     }
     const convertedTime = convertMs(differ);
 
-    valueArray[0].textContent = addLeadingZero(convertedTime.days);
-    valueArray[1].textContent = addLeadingZero(convertedTime.hours);
-    valueArray[2].textContent = addLeadingZero(convertedTime.minutes);
-    valueArray[3].textContent = addLeadingZero(convertedTime.seconds);
+    timeValueArray[0].textContent = addLeadingZero(convertedTime.days);
+    timeValueArray[1].textContent = addLeadingZero(convertedTime.hours);
+    timeValueArray[2].textContent = addLeadingZero(convertedTime.minutes);
+    timeValueArray[3].textContent = addLeadingZero(convertedTime.seconds);
   }, 1000);
 }
