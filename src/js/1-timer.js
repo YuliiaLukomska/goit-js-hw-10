@@ -38,6 +38,7 @@ const fp = flatpickr('#datetime-picker', {
       btnRef.disabled = false;
       btnRef.classList.add('active-btn');
       inputRef.disabled = true;
+      inputRef.classList.add('disable-input');
     }
   },
 });
@@ -78,6 +79,7 @@ function handleStartTimer() {
     if (differ < 1000) {
       clearInterval(intervalId);
       inputRef.disabled = false;
+      inputRef.classList.remove('disable-input');
     }
     const convertedTime = convertMs(differ);
 
