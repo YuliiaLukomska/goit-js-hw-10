@@ -7,6 +7,7 @@ import icon from '../img/left-close.svg';
 let userSelectedDate;
 let intervalId = null;
 const btnRef = document.querySelector('button[data-start]');
+const inputRef = document.querySelector('#datetime-picker');
 btnRef.disabled = true;
 let isActive = false;
 
@@ -36,6 +37,7 @@ const fp = flatpickr('#datetime-picker', {
     } else {
       btnRef.disabled = false;
       btnRef.classList.add('active-btn');
+      inputRef.disabled = true;
     }
   },
 });
@@ -75,6 +77,7 @@ function handleStartTimer() {
 
     if (differ < 1000) {
       clearInterval(intervalId);
+      inputRef.disabled = false;
     }
     const convertedTime = convertMs(differ);
 
