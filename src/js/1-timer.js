@@ -70,9 +70,9 @@ function handleStartTimer() {
   isActive = true;
   startButtonRef.disabled = true;
   startButtonRef.classList.remove('active-btn');
+  inputRef.disabled = true;
+  inputRef.classList.add('disable-input');
   intervalId = setInterval(() => {
-    inputRef.disabled = true;
-    inputRef.classList.add('disable-input');
     const startTime = Date.now();
     const differ = userSelectedDate - startTime;
 
